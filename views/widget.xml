@@ -1,0 +1,52 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="shopify_app_bought_together_widget">
+      <field name="name">Shopify App Widget Info</field>
+      <field name="model">widget.info</field>
+      <field name="arch" type="xml">
+        <tree>
+
+             <field name="widget_title"/>
+             <field name="widget_description"/>
+             <field name="num_product"/>
+             <field name="total_price"/>
+            <field name="status"/>
+            <field name="title_color"/>
+            <field name="des_color"/>
+            <field name="text_color"/>
+            <field name="background_color"/>
+            <field name="border_color"/>
+            <field name="title_font_size_value"/>
+            <field name="description_font_size_value"/>
+            <field name="button_text"/>
+            <field name="layout_style"/>
+            <field name="number_product_show"/>
+            <field name="list_product"/>
+            <field name="shopify_shop"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="shopify_app_bought_together_widget_action">
+      <field name="name">Widget action</field>
+      <field name="res_model">widget.info</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+
+
+    <menuitem name="App Widget" id="menu_shopify_app_bought_together_app_widget" parent="menu_root"  action="shopify_app_bought_together_widget_action"/>
+
+
+
+
+  </data>
+</odoo>

@@ -1,0 +1,45 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="shopify_app_bought_together">
+      <field name="name">Shopify App</field>
+      <field name="model">shopify.api</field>
+      <field name="arch" type="xml">
+        <tree>
+             <field name="shop_url"/>
+
+             <field name="sp_access_token"/>
+<!--             <field name="cdn_tag"/>-->
+            <field name="email"/>
+            <field name="shop_name"/>
+            <field name="shop_id"/>
+            <field name="user"/>
+            <field name="widget"/>
+            <field name="currency" />
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="shopify_app_bought_together_action">
+      <field name="name">Shopify action</field>
+      <field name="res_model">shopify.api</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+
+    <!-- Top menu item -->
+ <menuitem id="menu_root" name="Bought Together"/>
+    <menuitem name="Shopify Bought Together" id="menu_shopify_app_bought_together_app" parent="menu_root"  action="shopify_app_bought_together_action"/>
+
+
+
+
+  </data>
+</odoo>

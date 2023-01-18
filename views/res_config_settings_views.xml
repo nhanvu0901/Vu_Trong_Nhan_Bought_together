@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form_bought_together" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.shopify.bought_togethe_appr</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="90"/>
+            <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[hasclass('settings')]" position="inside">
+                    <div class="app_settings_block" data-string="Shopify" id="shopify" string="Shopify"  >
+                        <h2>Shopify Management</h2>
+                        <div class="row mt16 o_settings_container" id="shopify_setting">
+                            <div class="col-12 col-lg-6 o_setting_box">
+
+                                    <span class="o_form_label">Bought Together App config</span>
+
+
+
+
+                                    <div >
+                                        <span>Api version</span>
+                                        <field name="api_version_bought_together" />
+
+                                    </div>
+                                    <div >
+                                        <span>Redirect URL</span>
+                                        <field name="redirect_url_bought_together"/>
+
+                                    </div>
+                                    <div >
+                                        <span>API Key</span>
+                                        <field name="sp_api_key_bought_together"  />
+
+                                    </div>
+                                    <div >
+                                        <span>API secret key</span>
+                                        <field name="sp_api_secret_key_bought_together"  />
+
+                                    </div>
+                                    <div >
+                                        <span>CDN tag</span>
+                                        <field name="cdn_tag_bought_together" />
+                                    </div>
+                                <div >
+                                   <button name="add_script_tag_to_shop_bought_together" string="Update" type="object" class="oe_highlight"/>
+                                </div>
+                                <div >
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="shopify_config_settings_action_bought_together" model="ir.actions.act_window">
+            <field name="name">Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="context">{'module' : 'test_shopi', 'bin_size': False}</field>
+        </record>
+
+
+        <menuitem id="shopify_bought_together_config_settings_menu_" name="Settings"
+             parent="menu_root"  action="shopify_config_settings_action_bought_together"
+           />
+    </data>
+</odoo>
