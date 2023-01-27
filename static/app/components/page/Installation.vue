@@ -173,7 +173,10 @@ export default {
   },
   methods:{
     redirectStore(){
-      window.location.href ="https://shoplify-odoo.myshopify.com/"
+      let a= document.createElement('a');
+      a.target= '_blank';
+      a.href ="https://"+this.shop_url+"/admin/themes/current/editor";
+      a.click();
     }
   },
   mounted() {

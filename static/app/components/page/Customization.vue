@@ -3,7 +3,7 @@
 
      <div class="btn-container">
        <a-button class="cancel-btn">Cancel</a-button>
-      <a-button class="save-btn" @click="savePreview">Save</a-button>
+      <a-button class="save-btn" @click="savePreview" style="background-color: #1D1E21; color:#FFFFFF ">Save</a-button>
     </div>
     <h2
         style="font-style: normal;
@@ -15,12 +15,24 @@
 
     color: #000000;
 
-    ">Settings</h2>
+    ">Settings             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 6C0 2.6865 2.6865 0 6 0C9.3135 0 12 2.6865 12 6C12 9.3135 9.3135 12 6 12C2.6865 12 0 9.3135 0 6ZM6.67501 7.20115H5.39337V7.11654C5.39992 5.93719 5.68836 5.76447 6.21774 5.44746C6.27369 5.41396 6.33232 5.37885 6.3936 5.34077C6.83188 5.06548 7.16874 4.71775 7.16874 4.21065C7.16874 3.64197 6.72322 3.27251 6.16903 3.27251C5.6583 3.27251 5.1748 3.51123 5.1422 4.1922H3.78223C3.81845 2.81578 4.90852 2.1 6.17627 2.1C7.55994 2.1 8.51256 2.96825 8.51256 4.19254C8.51256 5.02202 8.09601 5.56534 7.42954 5.96378C7.37879 5.99491 7.33125 6.02353 7.28673 6.05034C6.81326 6.33539 6.68163 6.41464 6.67501 7.11654V7.20115ZM6.77747 9.00841C6.77384 9.45031 6.40801 9.80528 5.98059 9.80528C5.53869 9.80528 5.18009 9.45031 5.18372 9.00841C5.18009 8.57375 5.53869 8.21877 5.98059 8.21877C6.40801 8.21877 6.77384 8.57375 6.77747 9.00841Z" fill="#5C5F62"/>
+</svg>
+</h2>
 
     <div class="setting-container">
 
     <div class="config">
-      <h3 class="header-label">General Configuration</h3>
+      <h3 class="header-label"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 6C0 2.6865 2.6865 0 6 0C9.3135 0 12 2.6865 12 6C12 9.3135 9.3135 12 6 12C2.6865 12 0 9.3135 0 6ZM6.67501 7.20115H5.39337V7.11654C5.39992 5.93719 5.68836 5.76447 6.21774 5.44746C6.27369 5.41396 6.33232 5.37885 6.3936 5.34077C6.83188 5.06548 7.16874 4.71775 7.16874 4.21065C7.16874 3.64197 6.72322 3.27251 6.16903 3.27251C5.6583 3.27251 5.1748 3.51123 5.1422 4.1922H3.78223C3.81845 2.81578 4.90852 2.1 6.17627 2.1C7.55994 2.1 8.51256 2.96825 8.51256 4.19254C8.51256 5.02202 8.09601 5.56534 7.42954 5.96378C7.37879 5.99491 7.33125 6.02353 7.28673 6.05034C6.81326 6.33539 6.68163 6.41464 6.67501 7.11654V7.20115ZM6.77747 9.00841C6.77384 9.45031 6.40801 9.80528 5.98059 9.80528C5.53869 9.80528 5.18009 9.45031 5.18372 9.00841C5.18009 8.57375 5.53869 8.21877 5.98059 8.21877C6.40801 8.21877 6.77384 8.57375 6.77747 9.00841Z" fill="#5C5F62"/>
+</svg>
+    General Configuration</h3>
+
+      <div class="padding-container" style="padding-left: 23px;
+display: flex;
+flex-direction: column;
+gap: 1.5rem;">
+
       <h3 class="highlight">Widget Title</h3>
       <input type="text" v-model="widget_title" name="title"  style="
           border: 1px solid;
@@ -57,7 +69,8 @@
           <select v-model="title_font_size_value" style="
           border: 1px solid;
           border-radius: 5px;
-          height: 30px;">
+          height: 30px;
+           width: 190px;">
             <option disabled value="">Please select one</option>
             <option value="10px">Extra Small</option>
             <option value="15px">Small</option>
@@ -112,7 +125,7 @@
           <select v-model="description_font_size_value" style="
           border: 1px solid;
           border-radius: 5px;
-          height: 30px;">
+          height: 30px;width: 190px;">
           <option value="5px">Extra Small</option>
             <option value="10px">Small</option>
             <option value="15px">Medium</option>
@@ -156,7 +169,15 @@
           </div>
         </div>
 
-       <h3>Button Configuration</h3>
+        </div>
+
+       <h3 style="font-size: 18px"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 6C0 2.6865 2.6865 0 6 0C9.3135 0 12 2.6865 12 6C12 9.3135 9.3135 12 6 12C2.6865 12 0 9.3135 0 6ZM6.67501 7.20115H5.39337V7.11654C5.39992 5.93719 5.68836 5.76447 6.21774 5.44746C6.27369 5.41396 6.33232 5.37885 6.3936 5.34077C6.83188 5.06548 7.16874 4.71775 7.16874 4.21065C7.16874 3.64197 6.72322 3.27251 6.16903 3.27251C5.6583 3.27251 5.1748 3.51123 5.1422 4.1922H3.78223C3.81845 2.81578 4.90852 2.1 6.17627 2.1C7.55994 2.1 8.51256 2.96825 8.51256 4.19254C8.51256 5.02202 8.09601 5.56534 7.42954 5.96378C7.37879 5.99491 7.33125 6.02353 7.28673 6.05034C6.81326 6.33539 6.68163 6.41464 6.67501 7.11654V7.20115ZM6.77747 9.00841C6.77384 9.45031 6.40801 9.80528 5.98059 9.80528C5.53869 9.80528 5.18009 9.45031 5.18372 9.00841C5.18009 8.57375 5.53869 8.21877 5.98059 8.21877C6.40801 8.21877 6.77384 8.57375 6.77747 9.00841Z" fill="#5C5F62"/>
+</svg>
+ Button Configuration</h3>
+
+      <div style="padding-left: 23px">
+
       <h3 class="highlight">Button Text</h3>
       <input type="text" v-model="button_text" name="title"  style="
           border: 1px solid;
@@ -180,6 +201,7 @@
       style="
       display: flex;
       justify-content: space-between;
+      margin-bottom: 15px;
 "
 
       >
@@ -230,15 +252,18 @@
 
 
 
-
+</div>
     </div>
 
     <div class="preview">
-     <h3 class="header-label">Preview</h3>
+     <h3 class="header-label"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M0 6C0 2.6865 2.6865 0 6 0C9.3135 0 12 2.6865 12 6C12 9.3135 9.3135 12 6 12C2.6865 12 0 9.3135 0 6ZM6.67501 7.20115H5.39337V7.11654C5.39992 5.93719 5.68836 5.76447 6.21774 5.44746C6.27369 5.41396 6.33232 5.37885 6.3936 5.34077C6.83188 5.06548 7.16874 4.71775 7.16874 4.21065C7.16874 3.64197 6.72322 3.27251 6.16903 3.27251C5.6583 3.27251 5.1748 3.51123 5.1422 4.1922H3.78223C3.81845 2.81578 4.90852 2.1 6.17627 2.1C7.55994 2.1 8.51256 2.96825 8.51256 4.19254C8.51256 5.02202 8.09601 5.56534 7.42954 5.96378C7.37879 5.99491 7.33125 6.02353 7.28673 6.05034C6.81326 6.33539 6.68163 6.41464 6.67501 7.11654V7.20115ZM6.77747 9.00841C6.77384 9.45031 6.40801 9.80528 5.98059 9.80528C5.53869 9.80528 5.18009 9.45031 5.18372 9.00841C5.18009 8.57375 5.53869 8.21877 5.98059 8.21877C6.40801 8.21877 6.77384 8.57375 6.77747 9.00841Z" fill="#5C5F62"/>
+</svg>
+ Preview</h3>
       <div class="preview-container"
       style="
        min-height: 335px;
-
+       width: 95%;
        border: 1px solid #BFBFBF;
       border-radius: 5px;">
         <div :style="{ color: title_color_preview, fontSize: title_font_size_value_preview}"
@@ -284,7 +309,7 @@
 
       <div   class="checkbox-name-container" style="display: flex; flex-direction: column">
          <div v-for="(item,index) in list_product" class="row-item" style="display: grid;  display: inline-grid;
-  grid-template-columns:70% 30%; height: 3rem; align-content: center; padding: 0 7rem;
+  grid-template-columns:70% 30%; height: 3rem; align-content: center; padding: 0 7rem 0 2rem;
 ">
                 <div style="display: flex; justify-self: flex-start;  gap: 1rem;">
                 <input type="checkbox" :checked="true">
@@ -588,7 +613,7 @@ border-radius: 4px;
 }
 .setting-container{
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 48% 52%;
   gap: 1rem;
 }
 .highlight{
@@ -605,14 +630,13 @@ border-radius: 4px;
 #color-picker {
   border: 1px solid;
   border-radius: 25px;
-  height: 50px;
+  height: 30px;
   padding: 0;
-  width: 50px;
+  width: 30px;
 }
 .color-input{
   display: none;
 }
-
 .flex-row-container{
   display: flex;
   justify-content: space-between;

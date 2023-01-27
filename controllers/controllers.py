@@ -2,6 +2,8 @@
 import binascii
 import os
 import json
+
+import requests
 import shopify
 import werkzeug
 
@@ -47,6 +49,7 @@ class BoughtTogether(http.Controller):
         sp_api_key = request.env['ir.config_parameter'].sudo().get_param('bought_together.sp_api_key_bought_together')
         sp_api_secret_key = request.env['ir.config_parameter'].sudo().get_param('bought_together.sp_api_secret_key_bought_together')
         api_version = request.env['ir.config_parameter'].sudo().get_param('bought_together.api_version_bought_together')
+        script_tag = request.env['ir.config_parameter'].sudo().get_param('bought_together.cdn_tag_bought_together')
         shop_url = kw['shop']
 
 
@@ -77,6 +80,8 @@ class BoughtTogether(http.Controller):
                 "shop_name": shop.name,
                 "shop_id": shop.id,
                 "user": current_user.id,
+                "script_tag":script_tag,
+                "is_update_script_tag":True
             })
         else:
             widget_create = widget.create({
@@ -108,7 +113,9 @@ class BoughtTogether(http.Controller):
                 "user": current_user.id,
 
                 "widget":widget_create.id,
-                "currency":shop.currency
+                "currency":shop.currency,
+                "script_tag": script_tag,
+                "is_update_script_tag": True
 
             })
 
@@ -125,7 +132,7 @@ class BoughtTogether(http.Controller):
         if request.jsonrequest:
             shop_url = request.jsonrequest['shop_url']
             shopify_exist = request.env['shopify.api'].sudo().search([('shop_url', '=', shop_url)], limit=1)
-            shopify_exist.initShopifySession()
+            shopify_exist.initShopifySession(shopify_exist)
             # data_shopify = shopify.Product.find()
             client = shopify.GraphQL()
             shop = shopify.Shop.current()
@@ -303,4 +310,10 @@ class BoughtTogether(http.Controller):
         return "Hello"
 
 
+
+    @http.route('/return_api_instagram', type='json', auth='none', cors='*', csrf=False, save_session=False)
+    def get_access_token_instagram(self, **kw):
+        if request.jsonrequest:
+            print("Helloi")
+        return "Hello"
 

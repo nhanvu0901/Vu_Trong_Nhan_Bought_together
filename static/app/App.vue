@@ -138,6 +138,8 @@ export default {
   height: 100%;
   grid-area: main;
   padding: 0 1rem;
+  overflow-y: scroll;
+  margin-top:14px;
   }
 
 .main-container{
