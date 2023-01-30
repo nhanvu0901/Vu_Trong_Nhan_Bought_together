@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     navbar:function(){
-      return this.tabs.filter((item) => item !=="DashBoard")
+      return this.tabs.filter((item) => item !=="DashBoard" && item !=="Integration")
     }
   }
 

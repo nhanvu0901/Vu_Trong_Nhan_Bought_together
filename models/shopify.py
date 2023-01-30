@@ -24,6 +24,9 @@ class SApp(models.Model):
     script_tag = fields.Char(string='Script Tag')
     is_update_script_tag = fields.Boolean(default=True)
 
+
+
+
     @api.model
     def initShopifySession(self,shop):
         # sp_api_key = request.env['ir.config_parameter'].sudo().get_param('bought_together.sp_api_key')
@@ -47,7 +50,6 @@ class SApp(models.Model):
         shop_scrip_tag_false =  self.search([('is_update_script_tag', '=', False)], limit=30)
         for shop in shop_scrip_tag_false:
             if shop:
-
                 shop.update_script_tag(shop)
     def update_script_tag(self,shop):
         # Todo: Đưa phần này sang model shopify.api

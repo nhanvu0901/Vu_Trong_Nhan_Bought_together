@@ -80,9 +80,9 @@ initJQuery(function () {
 
                                 let image_button_price = document.createElement('DIV')
                                 image_button_price.style.cssText = "display: flex;align-items: center ;justify-content: space-evenly; margin-bottom: 2rem;"
-                                image_button_price.style.cssText = "display: flex;align-items: center ;justify-content: space-evenly; margin-bottom: 2rem;"
+
                                 let list_image_container = document.createElement("DIV")
-                                list_image_container.style.cssText = "display: flex;align-items: center"
+                                list_image_container.style.cssText = "display: flex;align-items: center; gap:10px"
                                 product_list.forEach((product, index) => {
                                     let product_image = document.createElement("IMG")
                                     product_image.style.cssText = 'width: 65px;height: 61px; border: 1px solid #E2E2E2;\n' +
@@ -93,7 +93,7 @@ initJQuery(function () {
                                     } else {
                                         product_image.src = product.item_img
                                         let plus = document.createElement("DIV")
-                                        plus.style.cssText = '20px'
+                                        plus.style.cssText = 'font-weight: 600;font-size: 16px;line-height: 22px;color: #000000;'
                                         plus.innerHTML = '+'
                                         list_image_container.appendChild(product_image)
                                         list_image_container.appendChild(plus)
@@ -119,12 +119,45 @@ initJQuery(function () {
                                 button.style.cssText= "color:" + text_color_preview+";"+"background-color:" +background_color_preview+";"+ "border: 1px solid"+border_color_preview+";"+"width: 100%;padding: 10px; border-radius: 3px; text-align: center;cursor: pointer;"
 
                                 button.innerHTML = button_text_preview
-                                button.addEventListener("mouseover", function(){
-                                       button.style.padding = "12px"
-                                    });
-                                button.addEventListener("mouseout", function(){
-                                       button.style.padding = "10px"
-                                    });
+
+
+
+
+
+                                button.addEventListener("click", function(){
+                                   var xmlhttp = new XMLHttpRequest();
+                                   var self = this
+                                    xmlhttp.open("POST", "https://odoo.website/make_draft_order");
+                                    xmlhttp.setRequestHeader("Content-Type", "application/json");
+                                     let param={
+                                              data:"hello",
+                                              product_list:product_list,
+                                            shop_url:Shopify.shop
+                                            }
+                                    xmlhttp.onreadystatechange = function () {
+                                        if (xmlhttp.readyState == 4) {
+                                            if (xmlhttp.status == 200) {
+
+
+                                               console.log(xmlhttp.responseText)
+
+                                             window.open(JSON.parse(JSON.parse(xmlhttp.responseText).result), '_blank');
+
+                                            }
+                                        }
+                                    };
+                                    xmlhttp.send(JSON.stringify(param))
+
+                                });
+
+
+
+
+
+
+
+
+
 
                                 price_button_container.appendChild(button)
 
@@ -157,7 +190,13 @@ initJQuery(function () {
 
                                      let price_compare = document.createElement("DIV")
                                     price_compare.style.cssText = "color: #444444; text-decoration: line-through"
-                                    price_compare.innerHTML = item.item_compare+currency
+                                    if(item.item_compare === null){
+                                        price_compare.innerHTML = ''
+                                    }
+                                    else{
+                                        price_compare.innerHTML = item.item_compare+currency
+                                    }
+
                                     price_container.appendChild(price_compare)
 
                                     row_item.appendChild(price_container)

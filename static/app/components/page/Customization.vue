@@ -185,16 +185,26 @@ gap: 1.5rem;">
           height: 30px;
           width: 75%;
             "/>
-      <h3>Text Color</h3>
-      <div id="color-picker" @click="colorTextPicker" :style="{ 'background-color': text_color  }">
-            <input type="color" class="color-input" id="text_color" v-model="text_color"  @input="InputTextColorPicker"/>
-      </div>
+      <h3 style="margin-top: 1rem;margin-bottom: 0">Button Text Color</h3>
 
-        <input type="text" v-model="text_color" name="text_color"  style="
+       <div class="input-flex" style="
+          display: flex;
+          flex-direction: row;
+          gap: 1rem;
+
+          ">
+         <div id="color-picker" @click="colorTextPicker" :style="{ 'background-color': text_color  }">
+            <input type="color" class="color-input" id="text_color" v-model="text_color"  @input="InputTextColorPicker"/>
+        </div>
+
+          <input type="text" v-model="text_color" name="text_color"  style="
         border: 1px solid;
         border-radius: 5px;
         height: 30px;
         width: 190px"/>
+       </div>
+
+
 
 
       <div class="last-two"
@@ -318,7 +328,7 @@ gap: 1.5rem;">
 
               <div style="display: grid;grid-template-columns: 2fr 3fr;;width: 280px;">
                <div style="color: red">{{item.item_price}} {{currency}}</div>
-                <div   style="color: #444444; text-decoration: line-through">{{item.item_compare}} {{currency}}</div>
+                <div   style="color: #444444; text-decoration: line-through">{{item.item_compare === null ? '': item.item_compare }} {{currency}}</div>
               </div>
 
          </div>

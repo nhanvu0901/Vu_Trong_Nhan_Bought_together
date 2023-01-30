@@ -50,7 +50,7 @@ color: #000000;
       <div class="preview-container"
       style="
 
-      min-width: 553px;
+      min-width: 700px;
        min-height: 335px;
        padding:1rem;
        border: 1px solid #BFBFBF;
@@ -105,9 +105,9 @@ color: #000000;
                 <div >{{item.item}} {{currency}}</div>
                   </div>
 
-              <div style="display: grid;gap: 1rem;grid-template-columns: 1fr 1fr;width: 220px;">
+              <div style="display: grid;gap: 1rem;grid-template-columns: 1fr 1fr;width: 240px;">
                <div style="color: red">{{item.item_price}} {{currency}}</div>
-                <div   style="color: #444444; text-decoration: line-through">{{item.item_compare}}</div>
+                <div   style="color: #444444; text-decoration: line-through">{{item.item_compare === null ? '': item.item_compare }} {{currency}}</div>
               </div>
 
          </div>
@@ -182,15 +182,13 @@ export default {
   mounted() {
     console.log(this.array_save)
 
-      var xmlhttp = new XMLHttpRequest();
+    var xmlhttp = new XMLHttpRequest();
    var self = this
     xmlhttp.open("POST", "https://odoo.website/get_widget_data");
     xmlhttp.setRequestHeader("Content-Type", "application/json");
     let param={
       data:"hello",
       shop_url:this.shop_url,
-
-
     }
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4) {

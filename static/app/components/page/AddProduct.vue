@@ -247,7 +247,7 @@ export default {
         }
       }
       else{
-
+        alert("Products have been saved in customization page.")
          if(this.namesExclude.length > 0){
 
            let fetch_product_list= JSON.parse(JSON.stringify(this.namesRecommend)).filter( (item) => !JSON.parse(JSON.stringify(this.namesExclude)).find((itemFilter) => itemFilter.id == item.id))
@@ -256,6 +256,7 @@ export default {
          }
          else{
            this.$emit('fetch_to_custom',JSON.parse(JSON.stringify(this.namesRecommend)))
+
          }
 
       }

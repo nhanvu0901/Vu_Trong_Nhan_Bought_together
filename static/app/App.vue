@@ -5,7 +5,10 @@
 
 
     <div class="content-container">
-      <NavbarMenu :tabs="tabs" :currentTab="currentTab" @setTab="setTab"/>
+     <div v-if="currentTab !=='DashBoard' && currentTab !=='Integration'">
+       <NavbarMenu :tabs="tabs" :currentTab="currentTab" @setTab="setTab"/>
+     </div>
+
       <component @setHome = setHome @reset_array="reset_array" @fetch_to_custom="fetch_save_array" :shop_url="shop_url"  :array_save="array_save"  :data="data" :is="currentTab"  class="tab" :isOpenPopUp="isOpenPopUp" @setPopUp="setPopUp"></component>
     </div>
 
@@ -26,6 +29,7 @@ import Installation from "./components/page/Installation.vue";
 import PopUp from "./components/PopUp.vue";
 import Loading from "./components/page/Loading.vue";
 import DashBoard from "./components/page/DashBoard.vue";
+import Integration from "./components/page/Integration.vue";
 window.value = [];
 window.widget_title = ''
 window.title_font_size_value = '20px'
@@ -61,12 +65,12 @@ export default {
       AddProduct,
       Customization,
       Installation,
-
+      Integration
     },
   data() {
         return {
             currentTab: 'AddProduct',
-            tabs: ['AddProduct', 'Customization','Installation','DashBoard'],
+            tabs: ['AddProduct', 'Customization','Installation','DashBoard','Integration'],
             isOpenPopUp : false,
 
             data:[],
