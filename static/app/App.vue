@@ -1,7 +1,7 @@
 <template>
   <div class="main-container">
     <SideBarMenu :tabs="tabs" :currentTab="currentTab" @setTab="setTab" class="side-menu"/>
-      <NavHeader class="header"/>
+      <NavHeader class="header" />
 
 
     <div class="content-container">

@@ -58,6 +58,9 @@ export default {
                   if (result === true){
                     alert("Shop da co user ")
                   }
+                  else{
+                     alert("Thanh cong")
+                  }
 
               }
           }

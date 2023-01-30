@@ -1,6 +1,6 @@
 <template>
 <div class="add-product">
-  <h1 class="title-main">WELCOME, NHAN VU</h1>
+  <h1 class="title-main">WELCOME, {{this.user_name}}</h1>
 
   <div  class="table-container">
         <table>
@@ -31,7 +31,8 @@ export default {
   name: "DashBoard",
   data(){
     return{
-      list_widget :[]
+      list_widget :[],
+      user_name:''
     }
   },
   methods:{
@@ -66,6 +67,34 @@ export default {
     shop_url:String
   },
   mounted() {
+
+    var xmlhttpfirst = new XMLHttpRequest();
+      var self = this
+      xmlhttpfirst.open("POST", "https://odoo.website/get_current_user_info");
+      xmlhttpfirst.setRequestHeader("Content-Type", "application/json");
+      let paramfirst={
+
+
+        shop_url:this.shop_url,
+      }
+      xmlhttpfirst.onreadystatechange = function () {
+          if (xmlhttpfirst.readyState == 4) {
+              if (xmlhttpfirst.status == 200) {
+
+                  console.log(xmlhttpfirst.responseText)
+                  if(xmlhttpfirst.responseText){
+                    self.user_name =JSON.parse(JSON.parse(xmlhttpfirst.responseText).result).name
+
+                  }
+
+
+              }
+          }
+      };
+      xmlhttpfirst.send(JSON.stringify(paramfirst))
+
+
+
 
    if(this.array_save.length === 0){
          var xmlhttp = new XMLHttpRequest();

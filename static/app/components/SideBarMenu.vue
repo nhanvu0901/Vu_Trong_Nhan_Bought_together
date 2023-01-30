@@ -2,7 +2,7 @@
  <div class="sidebar-menu">
 
     <div class="company-icon">
-      <div class="black-circle"></div>
+      <img src="/bought_together/static/app/img/LogoNestScale.png" class="black-circle">
       <p class="company-name">NestScale</p>
     </div>
 

@@ -5,7 +5,7 @@
 <!--        <a-button type="primary">Click me!</a-button>-->
        <font-awesome-icon icon="fa-solid  fa-circle-question"/>
        <font-awesome-icon icon="fa-regular fa-bell" />
-       <img src="https://s3-alpha-sig.figma.com/img/3a1e/e072/dfbc1dba6a6021fefb76f78e9fa363d0?Expires=1673222400&Signature=VCTofqxzRa-~zTmavUlxnf7vYzWvGFtYR6h9M3alsvXlmo45x60qlsK-Pa7McSRgkrXoIox0lzJ34Y30RpAvs9aB4J4bxLMGAtbXSiMvEKVNPpsZBhenWCFOWG2wrXwLI~HI2L0UZmb09SnlpTfOq1vTvjYX3kQzlZXWQcIbB~0m5veMuk2wfZU578xJzEjuXipJRWIpVtaFmUTKNI8faxDRPJhBR106RAKbkzCecK8sRM377pyYfG3CaMvOeMb3BjDPwu59LIhAKprWE4MLcpAA2Q~yl77P1p5p0Ng1TXSJNVovD~9UPyuzDi55KBZ0yYevaXB7ufAMN8i4P7-cDg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4">
+       <img :src="current_user_image">
     </div>
  </div>
 </template>
@@ -23,6 +23,48 @@ export default {
   components: {
       // 'a-button': Button,
     },
+
+  data() {
+    return{
+       current_user_name:'',
+       current_user_image:''
+    }
+  },
+   mounted() {
+
+
+   let queryString = window.location.search
+   let urlParams = new URLSearchParams(queryString);
+   let shop_url = urlParams.get('shop_url')
+
+
+
+
+     var xmlhttp = new XMLHttpRequest();
+      var self = this
+      xmlhttp.open("POST", "https://odoo.website/get_current_user_info");
+      xmlhttp.setRequestHeader("Content-Type", "application/json");
+      let param={
+
+
+        shop_url:shop_url,
+      }
+      xmlhttp.onreadystatechange = function () {
+          if (xmlhttp.readyState == 4) {
+              if (xmlhttp.status == 200) {
+
+                  console.log(xmlhttp.responseText)
+                  if(xmlhttp.responseText){
+                    self.current_user_image ="data:image/png;base64,"+JSON.parse(JSON.parse(xmlhttp.responseText).result).image_url
+
+                  }
+
+
+              }
+          }
+      };
+      xmlhttp.send(JSON.stringify(param))
+   }
 }
 </script>
 
